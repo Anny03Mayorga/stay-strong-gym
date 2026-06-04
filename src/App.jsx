@@ -163,7 +163,7 @@ export default function App() {
       </button>
 
       <section className="hero">
-        <img src="/logo2.png" alt="Stay Strong Gym" className="logo" />
+        <img src="/logo.png" alt="Stay Strong Gym" className="logo" />
       </section>
 
       <section className="week-calendar">
