@@ -336,10 +336,12 @@ export default function App() {
               </button>
 
               <img
-                src={modalEjercicio.imagen}
-                alt={modalEjercicio.nombre}
-                className="modal-image"
-              />
+  src={modalEjercicio.imagen}
+  alt={modalEjercicio.nombre}
+  className="modal-image"
+  loading="lazy"
+  decoding="async"
+/>
 
               <h2>{modalEjercicio.nombre}</h2>
 
