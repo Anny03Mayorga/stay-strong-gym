@@ -2,87 +2,101 @@
   box-sizing: border-box;
 }
 
-body {
+html,
+body,
+#root {
   margin: 0;
-  background: #050505;
-  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
-body::-webkit-scrollbar {
-  display: none;
+body {
+  background: #050505;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-text-size-adjust: 100%;
 }
 
 .app {
+  width: 100%;
+  max-width: 430px;
   min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: calc(22px + env(safe-area-inset-top)) 12px calc(24px + env(safe-area-inset-bottom));
   background:
     radial-gradient(circle at top, rgba(250, 204, 21, 0.16), transparent 28%),
     linear-gradient(180deg, #050505 0%, #111111 100%);
   color: white;
-  padding: 0 14px 26px;
+  overflow-x: hidden;
 }
 
 .hero {
   text-align: center;
-  margin-top: 10px;
-  margin-bottom: 6px;
+  margin: 0 0 12px;
 }
 
 .logo {
-  width: 140px;
-  height: 100px;
-  object-fit: cover;
+  width: 150px;
+  height: 74px;
+  object-fit: contain;
   object-position: center;
   display: block;
   margin: 0 auto;
 }
 
-/* =========================
-   SEMANA
-========================= */
+.logout-btn {
+  position: fixed;
+  top: calc(52px + env(safe-area-inset-top));
+  right: 10px;
+  z-index: 999;
+  background: rgba(250, 204, 21, 0.12);
+  border: 1px solid rgba(250, 204, 21, 0.45);
+  color: #facc15;
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  cursor: pointer;
+}
 
 .week-calendar {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-
-  max-width: 680px;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 5px;
   margin: 0 auto 12px;
 }
 
 .week-day {
+  min-width: 0;
   background: #121212;
   border: 1px solid #2b2b2b;
-
   border-radius: 12px;
-
-  padding: 6px 2px;
-
-  min-height: 52px;
-
+  padding: 7px 1px;
+  min-height: 54px;
   text-align: center;
   cursor: pointer;
   transition: 0.25s ease;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.week-day:hover {
-  transform: translateY(-2px);
-  border-color: rgba(250, 204, 21, 0.5);
-}
-
 .week-day strong {
-  font-size: 12px;
-  margin-bottom: 2px;
+  font-size: 11px;
+  margin-bottom: 3px;
   font-weight: 900;
+  white-space: nowrap;
 }
 
 .week-day small {
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 700;
   color: #cfcfcf;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .active-day {
@@ -101,20 +115,12 @@ body::-webkit-scrollbar {
   cursor: default;
 }
 
-/* =========================
-   CARD PRINCIPAL
-========================= */
-
 .routine-card {
-  max-width: 680px;
-  margin: 0 auto;
-
+  width: 100%;
   background: #111111;
   border: 1px solid rgba(250, 204, 21, 0.22);
   border-radius: 22px;
-
-  padding: 16px;
-
+  padding: 14px;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
 }
 
@@ -129,10 +135,6 @@ body::-webkit-scrollbar {
   font-size: 15px;
 }
 
-/* =========================
-   PROGRESO
-========================= */
-
 .progress-box {
   margin-bottom: 10px;
 }
@@ -140,10 +142,8 @@ body::-webkit-scrollbar {
 .progress-info {
   display: flex;
   justify-content: space-between;
-
   color: #facc15;
   font-weight: 900;
-
   margin-bottom: 6px;
   font-size: 15px;
 }
@@ -151,10 +151,8 @@ body::-webkit-scrollbar {
 .progress-bar {
   width: 100%;
   height: 7px;
-
   background: #2b2b2b;
   border-radius: 999px;
-
   overflow: hidden;
 }
 
@@ -165,44 +163,24 @@ body::-webkit-scrollbar {
   transition: width 0.3s ease;
 }
 
-/* =========================
-   BOTÓN RESET
-========================= */
-
 .reset-btn {
   width: 100%;
-
   margin-bottom: 12px;
   padding: 10px;
-
   border-radius: 13px;
   border: 1px solid #facc15;
-
   background: transparent;
   color: #facc15;
-
   font-size: 13px;
   font-weight: 900;
-
   cursor: pointer;
 }
-
-.reset-btn:hover {
-  background: #facc15;
-  color: #050505;
-}
-
-/* =========================
-   TIMER
-========================= */
 
 .timer-box {
   background: #1a1a1a;
   border-radius: 18px;
-
   padding: 12px;
   margin-bottom: 18px;
-
   border: 1px solid #2c2c2c;
 }
 
@@ -210,7 +188,6 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   margin-bottom: 10px;
 }
 
@@ -232,15 +209,11 @@ body::-webkit-scrollbar {
 .timer-btn,
 .timer-reset {
   flex: 1;
-
   padding: 10px;
-
   border-radius: 12px;
   border: none;
-
   font-size: 13px;
   font-weight: 900;
-
   cursor: pointer;
 }
 
@@ -254,10 +227,6 @@ body::-webkit-scrollbar {
   color: white;
 }
 
-/* =========================
-   EJERCICIOS
-========================= */
-
 .exercise-list {
   display: flex;
   flex-direction: column;
@@ -267,50 +236,33 @@ body::-webkit-scrollbar {
 .muscle-group {
   background: rgba(250, 204, 21, 0.04);
   border: 1px solid rgba(250, 204, 21, 0.14);
-
   border-radius: 20px;
   padding: 14px;
 }
 
 .group-title {
-  display: inline-block;
-
+  display: block;
+  width: fit-content;
+  margin: 0 auto 14px;
   background: #facc15;
   color: #050505;
-
-  padding: 7px 14px;
-
+  padding: 8px 18px;
   border-radius: 999px;
-
   font-size: 13px;
   font-weight: 900;
-
-  margin-bottom: 14px;
 }
 
 .exercise {
+  width: 100%;
   display: flex;
   gap: 12px;
   align-items: flex-start;
-
   background: #1d1d1d;
   border: 1px solid #303030;
-
   border-radius: 18px;
-
   padding: 14px;
   margin-bottom: 12px;
-
   transition: 0.25s ease;
-}
-
-.exercise:last-child {
-  margin-bottom: 0;
-}
-
-.exercise:hover {
-  border-color: rgba(250, 204, 21, 0.4);
-  transform: translateY(-2px);
 }
 
 .exercise.done {
@@ -324,23 +276,23 @@ body::-webkit-scrollbar {
 }
 
 .exercise input {
-  width: 18px;
-  height: 18px;
-
+  width: 20px;
+  height: 20px;
   accent-color: #facc15;
-
   margin-top: 3px;
+  flex: 0 0 auto;
 }
 
 .exercise-content {
   flex: 1;
+  min-width: 0;
+  text-align: center;
 }
 
 .exercise-content strong {
   display: block;
-
-  font-size: 18px;
-  margin-bottom: 6px;
+  font-size: 20px;
+  margin-bottom: 8px;
 }
 
 .exercise-content small {
@@ -350,37 +302,20 @@ body::-webkit-scrollbar {
 
 .rest-link,
 .exercise-expand {
-  margin-top: 8px;
-
+  margin-top: 10px;
   color: #facc15;
-
   font-size: 12px;
   font-weight: 800;
-
   cursor: pointer;
 }
 
-.exercise-expand:hover,
-.rest-link:hover {
-  text-decoration: underline;
-}
-
-/* =========================
-   INFO CARD
-========================= */
-
 .info-card {
+  width: 100%;
   background: rgba(250, 204, 21, 0.05);
   border: 1px solid rgba(250, 204, 21, 0.18);
-
   border-radius: 14px;
-
   padding: 10px 12px;
-
-  margin-bottom: 0;
-
   text-align: left;
-
   display: flex;
   align-items: center;
   gap: 10px;
@@ -401,9 +336,7 @@ body::-webkit-scrollbar {
 
 .info-card p {
   margin: 0;
-
   color: #cfcfcf;
-
   font-size: 12px;
   line-height: 1.35;
 }
@@ -419,57 +352,37 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-/* =========================
-   DÍA LIBRE
-========================= */
-
 .free-day-card {
   background: rgba(250, 204, 21, 0.08);
   border: 1px solid rgba(250, 204, 21, 0.22);
-
   border-radius: 20px;
-
   padding: 20px;
-
   text-align: center;
 }
 
 .free-day-card strong {
   display: block;
-
   color: #facc15;
-
   font-size: 20px;
-
   margin-bottom: 10px;
 }
 
 .free-day-card p {
   margin: 0;
-
   color: #d6d6d6;
-
   line-height: 1.6;
   font-size: 14px;
 }
 
-/* =========================
-   MODAL
-========================= */
-
 .modal-overlay {
   position: fixed;
   inset: 0;
-
   background: rgba(0, 0, 0, 0.82);
   backdrop-filter: blur(6px);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  padding: 20px;
-
+  padding: calc(20px + env(safe-area-inset-top)) 20px calc(20px + env(safe-area-inset-bottom));
   z-index: 999;
 }
 
@@ -477,17 +390,12 @@ body::-webkit-scrollbar {
   width: 100%;
   max-width: 520px;
   max-height: 88vh;
-
   background: #121212;
   border: 1px solid rgba(250, 204, 21, 0.25);
-
   border-radius: 24px;
-
   padding: 16px;
-
   position: relative;
   overflow: auto;
-
   text-align: center;
 }
 
@@ -495,18 +403,13 @@ body::-webkit-scrollbar {
   position: absolute;
   top: 12px;
   right: 12px;
-
   width: 36px;
   height: 36px;
-
   border: none;
   border-radius: 999px;
-
   background: rgba(250, 204, 21, 0.1);
   color: #facc15;
-
   cursor: pointer;
-
   font-size: 16px;
   font-weight: 900;
 }
@@ -514,16 +417,11 @@ body::-webkit-scrollbar {
 .modal-image {
   width: 100%;
   height: 260px;
-
   object-fit: contain;
   object-position: center;
-
   display: block;
-
   margin: 0 auto 16px;
-
   border-radius: 16px;
-
   background: #0b0b0b;
 }
 
@@ -534,24 +432,18 @@ body::-webkit-scrollbar {
 
 .exercise-modal p {
   margin: 0;
-
-  color: #d4d4d4;
-
-  line-height: 1.5;
-  font-size: 14px;
-}
-.exercise-modal p {
-  margin: 0;
   color: #d4d4d4;
   line-height: 1.5;
   font-size: 14px;
 }
+
 .login-container {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 28px 16px;
+  padding: calc(28px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom));
   background:
     radial-gradient(circle at top, rgba(250, 204, 21, 0.16), transparent 30%),
     linear-gradient(180deg, #050505 0%, #111111 100%);
@@ -618,27 +510,4 @@ body::-webkit-scrollbar {
   font-size: 14px;
   font-weight: 800;
   cursor: pointer;
-}
-.logout-btn {
-  position: fixed;
-  top: 14px;
-  right: 14px;
-  z-index: 50;
-
-  background: rgba(250, 204, 21, 0.12);
-  border: 1px solid rgba(250, 204, 21, 0.45);
-  color: #facc15;
-
-  padding: 8px 12px;
-  border-radius: 999px;
-
-  font-size: 12px;
-  font-weight: 900;
-
-  cursor: pointer;
-}
-
-.logout-btn:hover {
-  background: #facc15;
-  color: #050505;
 }
